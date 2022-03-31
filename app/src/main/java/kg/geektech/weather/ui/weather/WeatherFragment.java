@@ -1,5 +1,6 @@
 package kg.geektech.weather.ui.weather;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -59,19 +60,21 @@ public class WeatherFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel.getWeathers();
         viewModel.liveData.observe(getViewLifecycleOwner(), new Observer<Resource<MainResponse>>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onChanged(Resource<MainResponse> mainResponseResource) {
                 switch (mainResponseResource.status) {
                     case SUCCESS: {
                         Weather weather = new Weather();
-                        binding.textView.setText(String.valueOf(mainResponseResource.data.getMain().getTemp() + "\u2103"));
-                        binding.textView18.setText(String.valueOf(mainResponseResource.data.getMain().getHumidity() + "%"));
-                        binding.textView23.setText(String.valueOf(mainResponseResource.data.getMain().getPressure() + "mBar"));
-                        binding.textView24.setText(String.valueOf(mainResponseResource.data.getWind().getSpeed()+"km/h"));
-                        binding.textView3.setText(String.valueOf(mainResponseResource.data.getMain().getTempMin() + "\u2103"));
-                        binding.textView4.setText(String.valueOf(mainResponseResource.data.getMain().getTempMax() + "\u2103"));
-                        Glide.with(requireActivity()).load(weather.getIcon()).into(binding.sky);
-                        binding.tvCityName.setText(String.valueOf(mainResponseResource.data.getSys().getCountry()));
+                        binding.textView.setText(mainResponseResource.data.getMain().getTemp() + "\u2103");
+                        binding.textView18.setText(mainResponseResource.data.getMain().getHumidity() + "%");
+                        binding.textView23.setText(mainResponseResource.data.getMain().getPressure() + "mBar");
+                        binding.textView24.setText(mainResponseResource.data.getWind().getSpeed() + "km/h");
+                        binding.textView3.setText(mainResponseResource.data.getMain().getTempMin() + "\u2103");
+                        binding.textView4.setText(mainResponseResource.data.getMain().getTempMax() + "\u2103");
+                        //Glide.with(requireActivity()).load(mainResponseResource.data.).into(binding.sky);
+                        binding.textView2.setText(weather.getDescription());
+                        binding.tvCityName.setText(String.valueOf(mainResponseResource.data.getName()));
                         setData();
 
 
@@ -98,6 +101,7 @@ public class WeatherFragment extends Fragment {
         SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy");
         String currentDate = format.format(new Date());
         binding.date.setText(currentDate);
+
 //        binding.textView3.setText(String.valueOf(main.getTempMax()+"\u2103"));
 //        binding.textView4.setText(String.valueOf(main.getTempMin())+"\u2103");
 //        binding.textView18.setText(String.valueOf(main.getHumidity())+"%");
