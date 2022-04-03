@@ -9,15 +9,15 @@ import kg.geektech.weather.data.repositories.MainRepositories;
 import retrofit2.Retrofit;
 @HiltAndroidApp
 public class App extends Application {
-    private RetrofitClient retrofitClient;
-    private WeatherApi api;
-    public static MainRepositories repositories;
-
-    public void onCreate() {
-        super.onCreate();
-        retrofitClient = new RetrofitClient();
-        api = retrofitClient.provideApi();
-        repositories = new MainRepositories(api);
-    }
+//    private RetrofitClient retrofitClient;
+//    private WeatherApi api;
+//    public static MainRepositories repositories;
+//
+//    public void onCreate() {
+//        super.onCreate();
+//        retrofitClient = new RetrofitClient();
+//        api = retrofitClient.provideApi();
+//        repositories = new MainRepositories(api);
+//    }
 }
 

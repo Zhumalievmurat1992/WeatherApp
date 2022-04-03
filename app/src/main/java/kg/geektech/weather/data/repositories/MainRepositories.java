@@ -23,7 +23,7 @@ public class MainRepositories {
     public MutableLiveData<Resource<MainResponse>> getWeathers(String city){
         MutableLiveData<Resource<MainResponse>> liveData = new MutableLiveData<>();
           liveData.setValue(Resource.loading());
-          api.getWeathers(city,"007d33343df7413b825b5c04f4ef9214")
+          api.getWeathers(city,"007d33343df7413b825b5c04f4ef9214","metric")
                   .enqueue(new Callback<MainResponse>() {
               @Override
               public void onResponse(Call<MainResponse> call, Response<MainResponse> response) {

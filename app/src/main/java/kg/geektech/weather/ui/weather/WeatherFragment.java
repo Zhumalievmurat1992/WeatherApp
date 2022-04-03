@@ -96,7 +96,7 @@ public class WeatherFragment extends BaseFragment<FragmentWeatherBinding> {
 
                     case SUCCESS: {
                         loadData(mainResponseResource.data);
-                        binding.textView.setText(String.valueOf(mainResponseResource.data.getMain().getTemp()));
+
 
                     }
                     case LOADING: {
@@ -123,7 +123,7 @@ public class WeatherFragment extends BaseFragment<FragmentWeatherBinding> {
 
     private void loadData(MainResponse response) {
 
-       //binding.textView.setText(String.valueOf(response.getMain().getTemp()+""));
+       binding.textView.setText(String.valueOf((int) Math.round(response.getMain().getTemp())));
         binding.textView18.setText(response.getMain().getHumidity() + "%");
         binding.textView23.setText(response.getMain().getPressure() + "mBar");
         binding.textView24.setText(response.getWind().getSpeed() + "km/h");

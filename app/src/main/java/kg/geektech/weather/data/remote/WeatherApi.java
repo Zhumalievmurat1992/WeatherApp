@@ -10,7 +10,8 @@ public interface WeatherApi {
 
     @GET("weather")
     Call<MainResponse> getWeathers(@Query("q") String bishkek,
-                                   @Query("appid") String appId
+                                   @Query("appid") String appId,
+                                   @Query("units") String units
     );
 
 //    @GET("weather")
