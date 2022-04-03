@@ -1,5 +1,7 @@
 package kg.geektech.weather.data.remote;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -9,6 +11,9 @@ public class RetrofitClient {
 
 
     private OkHttpClient client = new OkHttpClient.Builder()
+            .connectTimeout(20, TimeUnit.SECONDS)
+            .writeTimeout(20,TimeUnit.SECONDS)
+            .readTimeout(20,TimeUnit.SECONDS)
             .addInterceptor(new HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY))
             .build();

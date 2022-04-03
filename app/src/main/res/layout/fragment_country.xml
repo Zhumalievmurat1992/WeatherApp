@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    tools:context="kg.geektech.weather.ui.weather.CountryFragment">
+
+
+
+    <EditText
+        android:id="@+id/et_city"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Введите ваш город!"/>
+
+    <Button
+        android:id="@+id/btn"
+        android:text="показать погоду!"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+</LinearLayout>
